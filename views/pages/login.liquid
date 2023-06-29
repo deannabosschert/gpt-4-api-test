@@ -1,0 +1,55 @@
+{% layout "base.liquid" %}
+{% block content %}
+
+<div class="login">
+    <div class="login_card">
+        <h2>Inloggen</h2>
+        <span class="loginFailed">{{ data.emailLogin }}</span>
+        <form id="login_form" action="/login" method="POST">
+            <span class="login-failed">Your e-mail address or password is incorrect.</span>
+            <span id="login-err-message" class="no-err-message">Check if all fields are filled in correctly.</span>
+            <label for="emailLogin">E-mail address</label>
+            <input class="no-err" type="text" name="emailLogin" id="emailLogin" placeholder="E-mail adress"
+                value="{{ data.emailLogin }}">
+            <span class="no-err-message"></span>
+            <label for="passwordLogin">Password</label>
+            <input class="no-err" type="password" name="passwordLogin" id="passwordLogin" placeholder="Password">
+            <span class="no-err-message"></span>
+            <button form="login_form" type="submit" class="inlogbutton">
+                Login
+            </button>
+            <h3 class="registratie">No account yet? <span class="signuptitle">Register here:</span></h3>
+            <button type="button" class="sign-up-button">
+                Register
+            </button>
+        </form>
+    </div>
+    <div class="sign-up_card sign-up_card-no-js">
+        <h2>Sign up</h2>
+        <span class="sign-up_card_close">x</span>
+        <form id="sign-up_form" action="/signup" method="POST">
+            <span class="sign-up-failed">The username <span class="takenUsername">{{ data.userSignup }}</span> is already taken, choose another.</span>
+            <span id="form-err-message" class="no-err-message">Check if all fields are filled in correctly</span>
+            <label for="userSignup">Username <span>*</span></label>
+            <input class="no-err" type="text" name="userSignup" id="userSignup" placeholder="Username">
+            <span class="no-err-message"></span>
+            <label for="emailSignup">E-mail address <span>*</span></label>
+            <input class="no-err" type="text" name="emailSignup" id="emailSignup" placeholder="E-mail adress">
+            <span class="no-err-message"></span>
+            <label for="passwordSignup">Password <span>*</span></label>
+            <input class="no-err" type="password" name="passwordSignup" id="passwordSignup" placeholder="Password">
+            <span class="no-err-message"></span>
+            <label for="passwordSignupRepeat">Repeat password <span>*</span></label>
+            <input class="no-err" type="password" name="passwordSignupRepeat" id="passwordSignupRepeat"
+                placeholder="Repeat password">
+            <span class="no-err-message"></span>
+            <button class="registreerbutton" form="sign-up_form" type="submit" value="submit">
+                Sign up
+            </button>
+        </form>
+    </div>
+
+</div>
+
+<script src="formValidator.js"></script>
+{% endblock %}
